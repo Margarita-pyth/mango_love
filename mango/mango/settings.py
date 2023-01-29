@@ -19,6 +19,11 @@ LOGIN_URL = 'users:login'
 LOGIN_REDIRECT_URL = 'questionnaire:home'
 LOGOUT_REDIRECT_URL = 'questionnaire:home'
 
+#  подключаем движок filebased.EmailBackend
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+# указываем директорию, в которую будут складываться файлы писем
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'sent_emails') 
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
