@@ -1,4 +1,31 @@
 {% extends 'base.html' %}
 {% block content %}
-{{ title }}
+{% load thumbnail %}
+<div id="heading">
+	<h1>Просмотр анкет</h1>
+</div>
+<main>
+    <section>
+        <blockquote><p>Здесь вы можете просмотреть анкеты пользователей.</p>
+        <p>Чтобы поставить лайк - Зарегистрируйтесь или Войдите.</p></blockquote>
+    </section>
+    {% for questionnaire in page_obj %}
+    <section class="sec2 clearfix">
+        <div class="container">
+            <div class="icons">
+                <div class="iconsChild">
+                    <div class="polaroid">
+                        <p> {{ questionnaire.user.get_full_name }}</p>
+                        <p> {{ questionnaire.city }}</p>
+                        {% thumbnail questionnaire.photo "200x150" crop="center" upscale=True as im %}
+                        <img class="ic" src="{{ im.url }}" alt="canter" width="250" height="200" >
+                        {% endthumbnail %}
+                        <p><a href="{% url 'questionnaire:profile' username=questionnaire.user.username %}">
+                            <span style="color:red"> подробная информация </span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}        
+</main>
 {% endblock %} 

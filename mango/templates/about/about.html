@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Информация о проекте{% endblock %}
+{% block content %}
+<div id="heading">
+	<h1>Информация о проекте</h1>
+</div>
+<main>
+  <section>
+    <blockquote><p>“Не так - то просто найти свое истинное призвание...свою любовь...”</p>
+        <cite>Кто-то на просторах интернета</cite></blockquote>
+</section>
+<div class="container">
+    <p>Данный проект был подготовлен в рамках повторения материала по курсу Яндекс.Практикума - "Python разработчик."</p>
+    <p>Веб-приложение представляет собой сайт знакомств "Mango-love".</p>
+        <ul><li>Здесь можно зарегистрироваться, создать и разместить свою анкету</li>
+            <li>Просматривать анкеты других пользователей.</li>
+            <li>Ставить лайки.</li>
+            <li>Если получен взаимный лайк, то можно начать переписку с другим пользователем.</li>
+            <li>Если вдруг вы забыли свой пароль для входа на сайт, пароль можно сбросить.</li></ul>
+        </div>
+    <figure>
+        <img src="{% static 'img/mango3.jpg' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/mango2.jpg' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/mango1.jpg' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/mango.jpg' %}" width="235" height="200" alt="">
+    </figure>
+    
+</main>
+{% endblock %}

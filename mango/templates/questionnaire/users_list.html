@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% block content %}
+
+
 {% for user in users %}
   <ul>
     <li>
@@ -12,4 +14,5 @@
   <p>{{ user.age }}</p>    
   {% if not forloop.last %}<hr>{% endif %}
 {% endfor %} 
+
 {% endblock %} 

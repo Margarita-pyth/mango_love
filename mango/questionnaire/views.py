@@ -1,30 +1,37 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import Questionnaire
+from .models import Questionnaire, User
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+
+POSTS_PER_PAGE = 10
 
 
 # Главная страница
 def index(request):
-    template = 'questionnaire/index.html'
-    title = 'Это Главная страница проекта'
+    questionnaire_list = Questionnaire.objects.all()
+    paginator = Paginator(questionnaire_list, POSTS_PER_PAGE)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
     context = {
-        # В словарь можно передать переменную
-        'title': title,
-        # А можно сразу записать значение в словарь. Но обычно так не делают
-        'text': 'Главная страница',
+        'page_obj': page_obj,
     }
-    return render(request, template, context) 
+    return render(request, 'questionnaire/index.html', context)
 
-# Страница со списком участников
-def list_users(request):
-    template = 'questionnaire/users_list.html'
-    title = 'Тут будет список участников'
+# ???????
+def profile(request, username):
+    questionnaire_user = get_object_or_404(User, username=username)
+    questionnaire_list = Questionnaire.objects.filter(user=questionnaire_user).all()
+
+    template = 'questionnaire/profile.html'
     context = {
-        # В словарь можно передать переменную
-        'users': Questionnaire.objects.all(),
+        'questionnaire_user': questionnaire_user,
     }
     return render(request, template, context)
 
-# Страница с информацией об одном участнике
-def users_detail(request, pk):
-    return HttpResponse(f'Участник {pk}')
+
+def detail(request, questionnaire_id):
+    # Здесь код запроса к модели и создание словаря контекста
+    context = {
+    }
+    return render(request, 'questionnaire/detail.html', context)

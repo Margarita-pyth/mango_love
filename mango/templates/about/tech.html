@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+<div id="heading">
+	<h1>Технологии</h1>
+</div>
+<main>
+  <section>
+    <blockquote>
+        <p>При написании проекта, охватывались следующие темы:</p>
+        <!--<img src="{% static 'img/logos.jpg' %}" width="915" height="305">-->
+    </blockquote>
+</section>
+<div class="container">
+        <ul><li>СУБД, SQL- lite</li>
+            <li>Отношения между таблицами (один к одному - в данном проекте).</li>
+            <li>Принципы ООП.</li>
+            <li>DJANGO ORM.</li>
+            <li>HTML верстка шаблонов.</li>
+            <li>Роутинг запросов, структуры адресов.</li><li>HttpResponse.</li>
+            <li>Система управления пользователями django.contrib.auth.</li>
+            <li>Страницы входа и другие шаблоны управления доступом.</li>
+            <li>Эмуляция почтового сервера.</li>
+            <li>Объекты форм и Generic Views.</li>
+            <li>Фильтрация - приложение core.</li>
+            <li>Декоратры.</li>
+            <li>Дополнительные компоненты Django: контент-процессоры, пагинатор.</li></ul>
+        </div>
+    <figure>
+        <img src="{% static 'img/python.jpg' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/oop1.png' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/basic-django.png' %}" width="235" height="200" alt="">
+    </figure>
+    <figure>
+        <img src="{% static 'img/drf-logo2.png' %}" width="235" height="200" alt="">
+    </figure>
+</main>
+{% endblock %}
