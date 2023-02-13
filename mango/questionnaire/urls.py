@@ -5,6 +5,6 @@ app_name = 'questionnaire'
 
 urlpatterns = [
     path('', views.index, name='home'), # Главная страница
-    path('profile/<str:username>/', views.profile, name='profile'),
-#   path('detail/<int:pk>/', views.detail, name='detail'),
+    path('detail/<int:pk>/', views.detail, name='detail'),
+    path('questionnaire/create', views.questionnaire_create, name='questionnaire_create'),
 ] 

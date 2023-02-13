@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+{% load static %} 
+{% load user_filters %}
+{% block title %}
+{% if is_edit %}Редактировать анкету
+{% else %}Добавить анкету{% endif %}
+{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> 
+<div class="row justify-content-center">
+  <div class="col-md-8 p-5">
+    <div class="card">
+      <div class="card-header">  
+        {% if form.errors %}
+         {% for field in form %}
+         {% for error in field.errors %}            
+            <div class="alert alert-danger">
+              {{ error|escape }}
+            </div>
+         {% endfor %}
+         {% endfor %}
+         {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+              {{ error|escape }}
+            </div>
+         {% endfor %}
+        {% endif %}
+
+           {% if is_edit %}
+              Редактировать анкету
+            {% else %}
+            <span style="color:green">Новая анкета</span>
+           {% endif %}   
+            
+          <div class="card-body">
+            {% if is_edit %}
+              <form method="post" enctype="multipart/form-data" action="" >
+            {% else %}
+              <form method="post" enctype="multipart/form-data" action="{% url 'questionnaire:questionnaire_create' %}">
+            {% endif %}
+            <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+
+         <div class="form-group row my-3 p-3">
+             <label for="id_text">
+               Ваше имя
+               <span class="required text-danger" >*</span>                  
+             </label>
+              {{ form.name }}
+              <small id="id_text-help" class="form-text text-muted">
+               как к Вам обращаться
+             </small>  
+          </div>
+
+          <div class="form-group row my-3 p-3">
+            <label for="id_text">
+              Добавьте фото
+              <span class="required text-danger" >*</span>                  
+            </label>
+             {{ form.photo }}
+             <small id="id_text-help" class="form-text text-muted">
+              ваша фотография
+            </small>  
+         </div>
+
+          <div class="form-group row my-3 p-3">
+            <label for="id_text">
+              Ваш возвраст
+              <span class="required text-danger" >*</span>                  
+            </label>
+             {{ form.age }}
+             <small id="id_text-help" class="form-text text-muted">
+              сколько Вам лет
+            </small>  
+         </div>
+
+         <div class="form-group row my-3 p-3">
+            <label for="id_text">
+              Цель вашего прибывания здесь
+              <span class="required text-danger" >*</span>                  
+            </label>
+             {{ form.text }}
+             <small id="id_text-help" class="form-text text-muted">
+              что вы хотите найти
+            </small>  
+         </div>
+
+
+         <div class="form-group row my-3 p-3">
+            <label for="id_text">
+              Добавьте город
+              <span class="required text-danger" >*</span>                  
+            </label>
+             {{ form.city }}
+             <small id="id_text-help" class="form-text text-muted">
+              город проживания
+            </small>  
+         </div>
+
+            <div class="col-md-6 offset-md-4">
+                <button type="submit">
+              {% if is_edit %}
+                Сохранить
+              {% else %}
+                Опубликовать
+              {% endif %}              
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+  </body>
+</html>
+{% endblock %}

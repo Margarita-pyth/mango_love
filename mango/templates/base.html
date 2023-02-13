@@ -12,6 +12,11 @@
 	<title>{%block title%} Главная {%endblock%} </title>
 </head>
 <body>
+	<style ENGINE="text/css">
+		a{text-decoration:none;color:#999;}
+		a:hover{color:#666;}
+		a.act{color:#fa8c00;}
+	</style>
 	<div id="wrapper">
 	<header>
         {% include 'includes/header.html' %}
@@ -29,4 +34,16 @@
 	<footer>
         {% include 'includes/footer.html' %}
     </footer>
+
+	<script type="text/javascript">
+		try{
+			var el=document.getElementById('current_link').getElementsByTagName('a');
+			var url=document.location.href;
+			for(var i=0;i<el.length; i++){
+				if (url==el[i].href){
+					el[i].className += ' act';
+					};
+					};
+					}catch(e){}
+	</script>
 </body>

@@ -1,66 +1,33 @@
-<!DOCTYPE html>
-<html lang="ru">
-  <head>
-    <!-- Подключены иконки, стили и заполенены мета теги -->
-    <title>Пост <!-- Первые 30 букв поста --></title>
-  </head>
-  <body>
-    <header>
-      <nav class="navbar navbar-light" style="background-color: lightskyblue">
-        <div class="container">
-          <a class="navbar-brand" href="/">
-            <img src="/static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
-            <span style="color:red">Ya</span>tube
-          </a>
+{% extends 'base.html' %}
+{% load static %}
+{% load thumbnail %}
+{% block title %}Профиль{% endblock %}
+{% block content %}
+<div id="heading">
+	<h1>Профиль пользователя {{ questionnaire.name }}</h1>
+</div>
+
+<main>
+  <div class="container">
+  {% thumbnail questionnaire.photo "500x300" crop="center" upscale=True as im %}
+  <img  src="{{ im.url }}" alt="" >
+  {% endthumbnail %}
+    <p>Город проживания: {{ questionnaire.city }}</p>
+    <p>Возраст: {{ questionnaire.age }}</p>
+    <p>Цель пребывания на сайте: {{ questionnaire.text }}</p>
+
+    <p>Хобби, увлечения:</p>
+        <ul><li>Хобби какие нить.</li>
+            <li>Хобби какие нить.</li>
+            <li>Хобби какие нить.</li>
+            <li>Хобби какие нить.</li>
+            <li>Хобби какие нить.</li></ul>
         </div>
-      </nav>      
-    </header>
-    <main>
-      <div class="row">
-        <aside class="col-12 col-md-3">
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">
-              Дата публикации: <!-- 31 июля 1854 --> 
-            </li>
-            <!-- если у поста есть группа -->   
-            <li class="list-group-item">
-              Группа: <!-- Название группы -->
-              <a href="<!-- -->">
-                все записи группы
-              </a>
-            </li>
-            <li class="list-group-item">
-              Автор: <!--Лев Толстой-->
-            </li>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-              Всего постов автора:  <span ><!-- --></span>
-            </li>
-            <li class="list-group-item">
-              <a href="<!-- -->">
-                все посты пользователя
-              </a>
-            </li>
-          </ul>
-        </aside>
-        <article class="col-12 col-md-9">
-          <p>
-           <!--
-            [Фокшаны.] Еще переходъ до Фокшанъ, во время котораго я ѣхалъ съ 
-            Монго. Человѣкъ пустой, но съ твердыми, хотя и ложными убѣжденіями.
-            Генерал[у] по этому должно быть случаю, угодно было спрашивать о мое
-            мъ здоровьи.
-            Свинья! К[о]вырялъ носъ и ничего не написалъ — вотъ 2 упрека за 
-            нын[ѣшній]     день. Послѣдній упрекъ становится слишкомъ частъ, 
-            хотя походъ и можетъ служить въ немъ отчасти извиненіемъ. 
-            Отношенія мои съ товарищами становятся такъ пріятны, что мнѣ 
-            жалко бросить штабъ. Здоровье кажется (2) лучше. 
-           --> 
-          </p>
-        </article>
-      </div> 
-    </main>
-    <footer class="border-top text-center py-3">
-      <p>© <!--2021 --> Copyright <span style="color:red">Ya</span>tube</p>
-    </footer>
-  </body>
-</html>
+        
+    <figure>
+        <img src="{% static 'img/social love.jpg' %}" width="960" height="310" alt="">
+    </figure>
+
+</main>
+
+{% endblock %}
