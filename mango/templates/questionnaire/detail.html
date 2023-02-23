@@ -23,11 +23,20 @@
             <li>Хобби какие нить.</li>
             <li>Хобби какие нить.</li></ul>
         </div>
-        
+
+        {% if questionnaire.user == request.user %}
+        <div class="col-md-6 offset-md-4">
+            <button type="submit">
+            <a href="{% url 'questionnaire:questionnaire_edit' user.id %}">
+                <span style="color:white">Редактировать анкету</a></span>
+          </button> 
+        </div>
+        {% endif %}
+
+    <p>    
     <figure>
         <img src="{% static 'img/social love.jpg' %}" width="960" height="310" alt="">
     </figure>
-
+    </p>
 </main>
-
 {% endblock %}

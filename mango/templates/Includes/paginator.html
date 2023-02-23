@@ -1,0 +1,39 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> 
+{% if page_obj.has_other_pages %}
+<nav aria-label="Page navigation" class="my-5">
+  <ul class="pagination">
+    {% if page_obj.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page=1"> <span style="color:orange"> Первая</a></li></span>
+      <li class="page-item">
+        <a class="page-link" style="color:orange" href="?page={{ page_obj.previous_page_number }}">
+          Предыдущая
+        </a>
+      </li>
+    {% endif %}
+    {% for i in page_obj.paginator.page_range %}
+        {% if page_obj.number == i %}
+          <li class="page-item active">
+            <span class="page-link" style="color:orange">{{ i }}</span>
+          </li>
+        {% else %}
+          <li class="page-item">
+            <a class="page-link" <span style="color:orange" href="?page={{ i }}">{{ i }}</span></a>
+          </li>
+        {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <li class="page-item">
+        <a class="page-link" <span style="color:orange" href="?page={{ page_obj.next_page_number }}"></span>
+          <span style="color:orange">Следующая</span>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" <span style="color:orange" href="?page={{ page_obj.paginator.num_pages }}"></span>
+          <span style="color:orange">Последняя</span>
+        </a>
+      </li>
+    {% endif %}    
+  </ul>
+</nav>
+{% endif %}

@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index, name='home'), # Главная страница
     path('detail/<int:pk>/', views.detail, name='detail'),
     path('questionnaire/create', views.questionnaire_create, name='questionnaire_create'),
+    path('detail/<int:pk>/edit', views.questionnaire_edit, name='questionnaire_edit'),
 ] 
