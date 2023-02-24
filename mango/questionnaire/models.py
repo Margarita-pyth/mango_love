@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from .choices import AGE_CHOICES, COUNTRY_CHOICES
+from django.contrib.contenttypes.fields import GenericRelation
+from likes.models import Like
 
 User = get_user_model()
 
@@ -38,6 +40,14 @@ class Questionnaire(models.Model):
     pub_date = models.DateTimeField(
         "Дата регистрации",
         auto_now_add=True)
+#    likes = GenericRelation(Like)
+
     
     def __str__(self) -> str:
         return self.name
+     
+    
+    @property
+    def total_likes(self):
+        pass
+        return self.likes.count()

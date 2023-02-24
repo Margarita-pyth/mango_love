@@ -6,21 +6,14 @@
     <li><a href="{% url 'questionnaire:home' %}">Главная</a></li>
     <li><a href="{% url 'about:project' %}">О проекте</a></li>
     <li><a href="{% url 'about:tech' %}">Технологии</a></li>
-
-    {% for questionnaire in page_obj %}
-    {% if questionnaire.user == request.user %}
+    {% if request.user.questionnaire %}
         <li><a href="{% url 'questionnaire:questionnaire_edit' user.id %}">Редактировать анкету</a></li>
+    {% else %}
+        <li><a href="{% url 'questionnaire:questionnaire_create' %}">Опубликовать анкету</a></li>
     {% endif %}
-    {% endfor %}
-
-    {% if questionnaire.user is not request.user %}
-    <li><a href="{% url 'questionnaire:questionnaire_create' %}">Опубликовать анкету</a></li>
-    {% endif %}
-
     <li><a href="{% url 'users:reset_password' %}">Сбросить пароль</a></li>
     <li><a href="{% url 'users:logout' %}">Выход</a></li>
     <span style="color:green">Ваш ник: {{ user.username }}</span>
-
     {% else %}
 <div id="current_link">
 <ul class="top-menu">

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Questionnaire
+from .models import Questionnaire, User
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .forms import QuestionnaireForm
@@ -15,14 +15,14 @@ def index(request):
     page_obj = paginator.get_page(page_number)
     questionnaire_user = request.user
     context = {
-        'questionnaire_user':questionnaire_user,
+        'questionnaire_user': questionnaire_user,
         'page_obj': page_obj,
     }
     return render(request, 'questionnaire/index.html', context)
 
 
 def detail(request, pk):
-    users = Questionnaire.objects.all()
+    user = Questionnaire.objects.all()
     questionnaire = get_object_or_404(Questionnaire, user_id=pk)
     context = {
         'questionnaire': questionnaire,
@@ -47,7 +47,7 @@ def questionnaire_create(request):
 def questionnaire_edit(request, pk):
     questionnaire = get_object_or_404(Questionnaire, pk=pk)
     if questionnaire.user != request.user:
-        return redirect('questionnaire:detail', user_id=pk)
+            return redirect('questionnaire:detail', user_id=pk)
 
     form = QuestionnaireForm(
         request.POST or None,

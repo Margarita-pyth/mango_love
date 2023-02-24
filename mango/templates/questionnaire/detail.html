@@ -6,7 +6,6 @@
 <div id="heading">
 	<h1>Профиль пользователя {{ questionnaire.name }}</h1>
 </div>
-
 <main>
   <div class="container">
   {% thumbnail questionnaire.photo "500x300" crop="center" upscale=True as im %}
@@ -23,7 +22,6 @@
             <li>Хобби какие нить.</li>
             <li>Хобби какие нить.</li></ul>
         </div>
-
         {% if questionnaire.user == request.user %}
         <div class="col-md-6 offset-md-4">
             <button type="submit">
@@ -32,7 +30,6 @@
           </button> 
         </div>
         {% endif %}
-
     <p>    
     <figure>
         <img src="{% static 'img/social love.jpg' %}" width="960" height="310" alt="">
