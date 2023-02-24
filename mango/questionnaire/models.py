@@ -40,7 +40,7 @@ class Questionnaire(models.Model):
     pub_date = models.DateTimeField(
         "Дата регистрации",
         auto_now_add=True)
-#    likes = GenericRelation(Like)
+    likes = GenericRelation(Like)
 
     
     def __str__(self) -> str:
@@ -49,5 +49,4 @@ class Questionnaire(models.Model):
     
     @property
     def total_likes(self):
-        pass
         return self.likes.count()

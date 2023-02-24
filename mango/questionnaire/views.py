@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Questionnaire, User
+from .models import Questionnaire
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .forms import QuestionnaireForm
@@ -9,6 +9,7 @@ from django.shortcuts import redirect
 QUESTIONNAIRES = 9
 
 def index(request):
+    """Главная страница."""
     questionnaire_list = Questionnaire.objects.get_queryset().order_by('user_id')
     paginator = Paginator(questionnaire_list, QUESTIONNAIRES)
     page_number = request.GET.get('page')
@@ -22,7 +23,7 @@ def index(request):
 
 
 def detail(request, pk):
-    user = Questionnaire.objects.all()
+    """Анкета одного пользователя."""
     questionnaire = get_object_or_404(Questionnaire, user_id=pk)
     context = {
         'questionnaire': questionnaire,
@@ -32,6 +33,7 @@ def detail(request, pk):
 
 @login_required
 def questionnaire_create(request):
+    """Создание анкеты пользователем."""
     form = QuestionnaireForm(request.POST or None,
                     files=request.FILES or None
                     )
@@ -45,6 +47,7 @@ def questionnaire_create(request):
 
 @login_required
 def questionnaire_edit(request, pk):
+    """Редактирование своей анкеты."""
     questionnaire = get_object_or_404(Questionnaire, pk=pk)
     if questionnaire.user != request.user:
             return redirect('questionnaire:detail', user_id=pk)
