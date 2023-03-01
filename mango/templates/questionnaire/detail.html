@@ -7,6 +7,25 @@
 	<h1>Профиль пользователя {{ questionnaire.name }}</h1>
 </div>
 <main>
+    {% if questionnaire.user != request.user %}
+    {% if liked %}
+    <p> Ставим дизлайк? 
+        <div class="col-md-6 offset-md-4">
+            <button type="submit">
+            <a href="{% url 'likes:add_like' questionnaire.user.id %}">>
+                <span style="color:white">Дизлайк</a></span>
+          </button> 
+    </p>
+  {% else %}
+    <p> Ставим лайк? 
+        <div class="col-md-6 offset-md-4">
+            <button type="submit">
+            <a href="{% url 'likes:add_like' questionnaire.user.id %}">>
+                <span style="color:white">Лайк</a></span>
+          </button> 
+    </p>
+    {% endif %}
+    {% endif %}
   <div class="container">
   {% thumbnail questionnaire.photo "500x300" crop="center" upscale=True as im %}
   <img  src="{{ im.url }}" alt="" >

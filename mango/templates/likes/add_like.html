@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% block content %}
+{% block title %}Мои лайки{% endblock %}
+{% for questionnaire in page_obj %}
+{% if questionnaire.user != request.user %}
+    <section class="sec2 clearfix">
+        <div class="container">
+            <div class="icons">
+                <div class="iconsChild">
+                    <div class="polaroid">
+                        <p> {{ questionnaire.user.get_full_name }}</p>
+                        <p> {{ questionnaire.city }}</p>
+                        {% thumbnail questionnaire.photo "200x150" crop="center" upscale=True as im %}
+                        <img class="ic" src="{{ im.url }}" alt="canter" width="250" height="200" >
+                        {% endthumbnail %}
+                        <p><a href="{% url 'questionnaire:detail' questionnaire.user.id %}">
+                            <span style="color:green"> подробная информация </span></a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endblock %} 

@@ -11,9 +11,12 @@
     {% else %}
         <li><a href="{% url 'questionnaire:questionnaire_create' %}">Опубликовать анкету</a></li>
     {% endif %}
+    <li><a href="{% url 'likes:my_likes' %}">Кого я лайкнул</a></li>
     <li><a href="{% url 'users:reset_password' %}">Сбросить пароль</a></li>
     <li><a href="{% url 'users:logout' %}">Выход</a></li>
+    <p>
     <span style="color:green">Ваш ник: {{ user.username }}</span>
+    </p>
     {% else %}
 <div id="current_link">
 <ul class="top-menu">

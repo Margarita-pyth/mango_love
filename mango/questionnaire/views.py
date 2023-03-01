@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from .models import Questionnaire
+from .models import Questionnaire, User
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from .forms import QuestionnaireForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
+from likes .models import Like
 
 QUESTIONNAIRES = 9
 
@@ -25,8 +26,16 @@ def index(request):
 def detail(request, pk):
     """Анкета одного пользователя."""
     questionnaire = get_object_or_404(Questionnaire, user_id=pk)
+    questionnaire_user = get_object_or_404(User, pk=pk)
+    liked = False
+    if Like.objects.filter(
+            user=request.user, questionnaire_user=questionnaire_user).exists():
+        liked = True
     context = {
         'questionnaire': questionnaire,
+        'questionnaire_user': questionnaire_user,
+        'liked': liked,
+
     }
     return render(request, 'questionnaire/detail.html', context)
 
