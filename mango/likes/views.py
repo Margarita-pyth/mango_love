@@ -32,3 +32,13 @@ def add_like(request, pk):
             questionnaire_user=questionnaire_user
         )
     return redirect('likes:my_likes')
+
+
+@login_required
+def dislike(request, pk):
+    questionnaire_user = get_object_or_404(User, pk=pk)
+    likes = get_object_or_404(
+        Like, user=request.user,
+        questionnaire_user=questionnaire_user)
+    likes.delete()
+    return redirect('likes:my_likes')
