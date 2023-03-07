@@ -38,6 +38,9 @@ class Questionnaire(models.Model):
         "Дата регистрации",
         auto_now_add=True)
 
+    class Meta:
+      verbose_name_plural = "Анкеты"
+
     
     def __str__(self) -> str:
         return self.name

@@ -1,7 +1,7 @@
 {% load static %}
 <header>
   <img src="{% static 'img/logo4.png' %}"width="250" height="70" />
-  <form name="search" action="#" method="get">
-    <input type="text" name="q" placeholder="Search"><button type="submit">GO</button>
+  <form name="search" action="{% url 'questionnaire:search_results' %}" method="get">
+    <input type="text" name="q" placeholder="Поиск по городу"><button type="submit">Найти</button>
   </form>
 </header>

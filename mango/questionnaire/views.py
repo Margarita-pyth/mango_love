@@ -6,8 +6,21 @@ from .forms import QuestionnaireForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect
 from likes .models import Like
+from django.views.generic import ListView
 
 QUESTIONNAIRES = 9
+
+class SearchResultsView(ListView):
+    """Поисковая форма."""
+    model = Questionnaire
+    template_name = 'questionnaire/search_results.html'
+
+    def get_queryset(self):
+        """Фильтруем данные по запросу."""
+        query = self.request.GET.get('q')
+        object_list = Questionnaire.objects.filter(
+            city__icontains=query)
+        return object_list
 
 def index(request):
     """Главная страница."""

@@ -17,3 +17,6 @@ class Like(models.Model):
     )
     UniqueConstraint(fields=['user', 'questionnaire_user'],
                      name='unique_likes')
+    
+    class Meta:
+      verbose_name_plural = "Лайки"
