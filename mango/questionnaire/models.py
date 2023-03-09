@@ -31,9 +31,6 @@ class Questionnaire(models.Model):
     text = models.TextField(
         "Ваша цель",
         help_text='Добавьте цель пребывания на сайте')
-    contact = models.EmailField(
-        "email",
-        help_text="Добавьте адрес электронной почты")
     pub_date = models.DateTimeField(
         "Дата регистрации",
         auto_now_add=True)

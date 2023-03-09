@@ -9,6 +9,14 @@
 <main>
     {% if questionnaire.user != request.user %}
     {% if liked %}
+    <p> Написать? 
+        <div class="col-md-6 offset-md-4">
+            <button type="submit">
+            <a href="{% url 'chat:create_dialog' questionnaire.user.id %}">>
+                <span style="color:white">Перейти в чат</a></span>
+          </button> 
+    </p>
+
     <p> Ставим дизлайк? 
         <div class="col-md-6 offset-md-4">
             <button type="submit">
