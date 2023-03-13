@@ -89,4 +89,3 @@ def questionnaire_edit(request, pk):
         'is_edit': True,
     }
     return render(request, 'questionnaire/questionnaire_create.html', context)
-

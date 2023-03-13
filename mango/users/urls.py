@@ -9,9 +9,6 @@ app_name = 'users'
 
 urlpatterns = [
     path('logout/',
-      # Прямо в описании обработчика укажем шаблон, 
-      # который должен применяться для отображения возвращаемой страницы.
-      # Да, во view-классах так можно! Как их не полюбить. http://127.0.0.1:8000/auth/logout/
       LogoutView.as_view(template_name='users/logged_out.html'),
       name='logout'
     ),

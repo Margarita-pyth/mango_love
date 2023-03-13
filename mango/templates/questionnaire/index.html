@@ -5,10 +5,15 @@
 	<h1>Просмотр анкет</h1>
 </div>
 <main>
+    {% if request.user.is_authenticated %}
     <section>
         <blockquote><p>Здесь вы можете просмотреть анкеты пользователей.</p>
-        <p>Чтобы поставить лайк - Зарегистрируйтесь или Войдите.</p></blockquote>
+        </blockquote>
+    {% else %}
+    <blockquote><p>Здесь вы можете просмотреть анкеты пользователей.</p>
+        <p>Чтобы поставить лайк - Зарегистрируйтесь и Войдите.</p></blockquote>
     </section>
+    {% endif %}
     {% for questionnaire in page_obj %}
     <section class="sec2 clearfix">
         <div class="container">

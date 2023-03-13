@@ -6,13 +6,12 @@
 {% load user_filters %}
 {% load static %} 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"> 
-
 {% if not chat %}
     <div class="panel panel-body">
-        'Невозможно начать беседу. Не найден пользователь или вы не имеете доступа к данной беседе.'
+        'Невозможно начать беседу.
+        Не найден пользователь или вы не имеете доступа к данной беседе.'
     </div>
 {% else %}
-{% load chat_tags %}
     {% if chat %}
         <div id="messages" class="panel">
             <div id="innerMessages">

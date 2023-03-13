@@ -10,4 +10,4 @@ urlpatterns = [
     path('questionnaire/create', views.questionnaire_create, name='questionnaire_create'),
     path('detail/<int:pk>/edit', views.questionnaire_edit, name='questionnaire_edit'),
     path('search/', SearchResultsView.as_view(), name='search_results'),
-] 
+]

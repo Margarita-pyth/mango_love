@@ -1,5 +1,4 @@
 {% load static %}
-
 {% if request.user.is_authenticated %}
 <div id="current_link">    
 <ul class="top-menu" > 
@@ -7,12 +6,13 @@
     <li><a href="{% url 'about:project' %}">О проекте</a></li>
     <li><a href="{% url 'about:tech' %}">Технологии</a></li>
     {% if request.user.questionnaire %}
-        <li><a href="{% url 'questionnaire:questionnaire_edit' user.id %}">Редактировать анкету</a></li>
+        <li><a href="{% url 'questionnaire:questionnaire_edit' user.id %}">Моя анкета</a></li>
     {% else %}
         <li><a href="{% url 'questionnaire:questionnaire_create' %}">Опубликовать анкету</a></li>
     {% endif %}
     <li><a href="{% url 'likes:my_likes' %}">Мои лайки</a></li>
-    <li><a href="{% url 'users:reset_password' %}">Сбросить пароль</a></li>
+    <li><a href="{% url 'chat:dialogs' %}">Чаты</a></li>
+    <li><a href="{% url 'users:reset_password' %}">Сброс пароля</a></li>
     <li><a href="{% url 'users:logout' %}">Выход</a></li>
     <p>
     <span style="color:green">Ваш ник: {{ user.username }}</span>
