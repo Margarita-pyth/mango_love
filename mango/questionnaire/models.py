@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth import get_user_model
-from .choices import AGE_CHOICES, COUNTRY_CHOICES
+from .choices import AGE_CHOICES, COUNTRY_CHOICES, FLOOR_CHOICES
 
 User = get_user_model()
 
@@ -23,6 +23,12 @@ class Questionnaire(models.Model):
         default=' ',
         max_length=20,
         help_text='Сколько вам лет')
+    floor = models.CharField(
+        "Ваш пол",
+        choices=FLOOR_CHOICES,
+        default=' ',
+        max_length=30,
+        help_text='Выберите пол')
     city = models.CharField(
         "Ваш город",
         choices=COUNTRY_CHOICES,

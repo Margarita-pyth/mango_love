@@ -14,6 +14,7 @@
                     <div class="polaroid">
                         <p> Пользователь: {{ questionnaire.name }}</p>
                         <p> Возвраст: {{ questionnaire.age }}</p>
+                        <p> Возвраст: {{ questionnaire.floor }}</p>
                         {% thumbnail questionnaire.photo "200x150" crop="center" upscale=True as im %}
                         <img class="ic" src="{{ im.url }}" alt="canter" width="250" height="200" >
                         {% endthumbnail %}

@@ -5,4 +5,4 @@ from django import forms
 class QuestionnaireForm(forms.ModelForm):
     class Meta:
         model = Questionnaire
-        fields = ('name', 'photo', 'age', 'city', 'text')
+        fields = ('name', 'photo', 'age', 'floor', 'city', 'text')

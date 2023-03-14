@@ -40,15 +40,12 @@
   {% endthumbnail %}
     <p>Город проживания: {{ questionnaire.city }}</p>
     <p>Возраст: {{ questionnaire.age }}</p>
+    <p>Пол: {{ questionnaire.floor }}</p>
     <p>Цель пребывания на сайте: {{ questionnaire.text }}</p>
-
     <p>Хобби, увлечения:</p>
-        <ul><li>Хобби какие нить.</li>
-            <li>Хобби какие нить.</li>
-            <li>Хобби какие нить.</li>
-            <li>Хобби какие нить.</li>
-            <li>Хобби какие нить.</li></ul>
+        <ul><li>Будет добавлено позже.</li></ul>
         </div>
+
         {% if questionnaire.user == request.user %}
         <div class="col-md-6 offset-md-4">
             <button type="submit">
