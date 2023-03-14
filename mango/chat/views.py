@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Chat
 from django.views.generic import View
-from .forms import *
+from .forms import MessageForm
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.db.models import Count
@@ -11,7 +11,8 @@ class CreateDialogView(View):
     """Начинаем диалог/чат."""
     def get(self, request, user_id):
         chats = Chat.objects.filter(members__in=[request.user.id, user_id],
-                                    type=Chat.DIALOG).annotate(c=Count('members')).filter(c=2)
+                                    type=Chat.DIALOG).annotate(
+                                    c=Count('members')).filter(c=2)
         if chats.count() == 0:
             chat = Chat.objects.create()
             chat.members.add(request.user)
@@ -19,14 +20,17 @@ class CreateDialogView(View):
         else:
             chat = chats.first()
         return redirect(reverse('chat:messages', kwargs={'chat_id': chat.id}))
-    
+
 
 class DialogsView(View):
     """Список чатов."""
     def get(self, request):
         chats = Chat.objects.filter(members__in=[request.user.id])
-        return render(request, 'users/dialogs.html', {'user_profile': request.user, 'chats': chats})
-    
+        return render(request,
+                      'users/dialogs.html',
+                      {'user_profile': request.user,
+                       'chats': chats})
+
 
 class MessagesView(View):
     """Переписка пользователей."""
@@ -40,7 +44,7 @@ class MessagesView(View):
                 chat = None
         except Chat.DoesNotExist:
             chat = None
- 
+
         return render(
             request,
             'users/messages.html',
@@ -50,7 +54,7 @@ class MessagesView(View):
                 'form': MessageForm()
             }
         )
- 
+
     def post(self, request, chat_id):
         form = MessageForm(data=request.POST)
         if form.is_valid():

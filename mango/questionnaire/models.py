@@ -4,13 +4,14 @@ from .choices import AGE_CHOICES, COUNTRY_CHOICES
 
 User = get_user_model()
 
+
 class Questionnaire(models.Model):
     """Класс пользовательская анкета."""
-    user = models.OneToOneField(User, 
-                                on_delete = models.CASCADE,
-                                primary_key = True)
+    user = models.OneToOneField(User,
+                                on_delete=models.CASCADE,
+                                primary_key=True)
     name = models.CharField("Имя",
-                            max_length=200, 
+                            max_length=200,
                             help_text='Как к Вам обращаться')
     photo = models.ImageField(
         'Фотография',
@@ -18,14 +19,14 @@ class Questionnaire(models.Model):
         blank=False)
     age = models.CharField(
         "Ваш возраст",
-        choices = AGE_CHOICES,
-        default = ' ',
+        choices=AGE_CHOICES,
+        default=' ',
         max_length=20,
         help_text='Сколько вам лет')
     city = models.CharField(
         "Ваш город",
-        choices = COUNTRY_CHOICES,
-        default = ' ',
+        choices=COUNTRY_CHOICES,
+        default=' ',
         max_length=30,
         help_text='Добавьте город проживания')
     text = models.TextField(
@@ -36,8 +37,7 @@ class Questionnaire(models.Model):
         auto_now_add=True)
 
     class Meta:
-      verbose_name_plural = "Анкеты"
+        verbose_name_plural = "Анкеты"
 
-    
     def __str__(self) -> str:
         return self.name

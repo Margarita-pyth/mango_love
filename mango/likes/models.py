@@ -4,6 +4,7 @@ from django.db.models import UniqueConstraint
 
 User = get_user_model()
 
+
 class Like(models.Model):
     user = models.ForeignKey(
         User,
@@ -17,6 +18,6 @@ class Like(models.Model):
     )
     UniqueConstraint(fields=['user', 'questionnaire_user'],
                      name='unique_likes')
-    
+
     class Meta:
-      verbose_name_plural = "Лайки"
+        verbose_name_plural = "Лайки"
