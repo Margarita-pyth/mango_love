@@ -31,6 +31,7 @@
                     <img class="avatar" src="{{ companion.questionnaire.photo.url }}"
                     alt="left" width="55" height="50" border-radius: "0%">
                 </div>
+                
                 <div class="reply-body">
                     <ul class="list-inline">
                         <li class="drop-left-padding">
@@ -38,6 +39,7 @@
                         </li>
                         <li class="pull-right text-muted"><small>{{ last_message.pub_date|utc }}</small></li>
                     </ul>
+                </div>
                 </div>
                     {% if companion != last_message.author %}
                     <div id="commenttext">
