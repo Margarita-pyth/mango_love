@@ -28,10 +28,10 @@
                 <div id="comment">
                     <div id="avatarbg">
                         <a href="{% url 'questionnaire:detail' companion.questionnaire.user.id %}">
-                    <img class="avatar" src="{{ companion.questionnaire.photo.url }}"
-                    alt="left" width="55" height="50" border-radius: "0%">
-                </div>
-                
+                            <img class="avatar" src="{{ companion.questionnaire.photo.url }}"
+                            alt="left" width="55" height="50" border-radius: "0%">
+                    </div>
+
                 <div class="reply-body">
                     <ul class="list-inline">
                         <li class="drop-left-padding">
@@ -41,14 +41,14 @@
                     </ul>
                 </div>
                 </div>
-                    {% if companion != last_message.author %}
-                    <div id="commenttext">
-                        <div>
-                            <div id="avatarbg">
+                {% if companion != last_message.author %}
+                <div id="comment">
+                    <div>
+                        <div id="avatarbg">
                             <img class="avatar" src="{{ last_message.author.questionnaire.photo.url }}"
                             alt="left" width="55" height="50" border-radius: "0%">
-                            </div>
-                            <div id="commentеxt {% if not last_message.is_readed %}unreaded{% endif %}">
+                        </div>
+                        <div id="commentеxt {% if not last_message.is_readed %}unreaded{% endif %}">
                             {{ last_message.message|truncatechars_html:"200"|safe|striptags }}
                         </div>
                     </div>
